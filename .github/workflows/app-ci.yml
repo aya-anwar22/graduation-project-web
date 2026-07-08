@@ -73,6 +73,12 @@ jobs:
         run: npm run coverage
 
 
+      - name: Verify Coverage
+        run: |
+          ls -la coverage
+          test -f coverage/lcov.info
+
+
       - name: Upload Coverage Report
         if: always()
         uses: actions/upload-artifact@v4
