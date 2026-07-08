@@ -1,0 +1,751 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out;
+}
+
+/* Gradient background */
+.gradient-bg {
+  background: linear-gradient(135deg, #0f3bbd 0%, #3a6bff 100%);
+}
+
+/* Shadow styles */
+.shadow-strong {
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.12);
+}
+
+.shadow-soft {
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Dark mode transitions */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+/* src/index.css */
+/* تخصيص شريط التمرير للـ sidebar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-track {
+    background: #1f2937;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #4b5563;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+}
+/* src/index.css */
+
+/* ================ تخصيص شريط التمرير العام ================ */
+
+/* للمتصفحات التي تدعم WebKit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+/* مسار شريط التمرير */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+/* مقبض شريط التمرير */
+::-webkit-scrollbar-thumb {
+    background: #376bcb; /* لون أحمر - نفس لون الـ primary */
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+/* hover على مقبض شريط التمرير */
+::-webkit-scrollbar-thumb:hover {
+    background: #376bcb; /* لون أحمر أغمق عند hover */
+    cursor: pointer;
+}
+
+/* ================ الوضع المظلم (Dark Mode) ================ */
+.dark ::-webkit-scrollbar-track {
+    background: #1f2937; /* خلفية داكنة */
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: #ef4444; /* نفس اللون الأحمر */
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+    background: #376bcb;
+}
+
+/* ================ تخصيص الـ Sidebar Scrollbar ================ */
+.sidebar-scroll::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-track {
+    background: #e5e7eb;
+    border-radius: 10px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb {
+    background: #376bcb;
+    border-radius: 10px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb:hover {
+    background: #376bcb;
+}
+
+.dark .sidebar-scroll::-webkit-scrollbar-track {
+    background: #374151;
+}
+
+/* ================ تخصيص الـ Main Content Scrollbar ================ */
+.main-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.main-scroll::-webkit-scrollbar-track {
+    background: #f3f4f6;
+    border-radius: 10px;
+}
+
+.main-scroll::-webkit-scrollbar-thumb {
+    background: #376bcb;
+    border-radius: 10px;
+}
+
+.main-scroll::-webkit-scrollbar-thumb:hover {
+    background: #376bcb;
+}
+
+.dark .main-scroll::-webkit-scrollbar-track {
+    background: #1f2937;
+}
+
+/* ================ تخصيص Scrollbar للجداول ================ */
+.table-scroll::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.table-scroll::-webkit-scrollbar-track {
+    background: #e5e7eb;
+    border-radius: 10px;
+}
+
+.table-scroll::-webkit-scrollbar-thumb {
+    background: #376bcb;
+    border-radius: 10px;
+}
+
+.dark .table-scroll::-webkit-scrollbar-track {
+    background: #374151;
+}
+
+/* ================ تخصيص Scrollbar للمودالات ================ */
+.modal-scroll::-webkit-scrollbar {
+    width: 4px;
+}
+
+.modal-scroll::-webkit-scrollbar-track {
+    background: #e5e7eb;
+    border-radius: 10px;
+}
+
+.modal-scroll::-webkit-scrollbar-thumb {
+    background: #376bcb;
+    border-radius: 10px;
+}
+
+/* ================ إخفاء scrollbar مع الحفاظ على الوظيفة (اختياري) ================ */
+.hide-scrollbar::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+/* :root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+} */
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700&display=swap');
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out;
+}
+
+/* Gradient background */
+.gradient-bg {
+  background: linear-gradient(135deg, #0f3bbd 0%, #3a6bff 100%);
+}
+
+/* Shadow styles */
+.shadow-strong {
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.12);
+}
+
+.shadow-soft {
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Dark mode transitions */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* ============================================================
+   شريط التمرير العام
+   ============================================================ */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #4b5563;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #376bcb;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2c54a3;
+  cursor: pointer;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #ef4444;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #376bcb;
+}
+
+.sidebar-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: #e5e7eb;
+  border-radius: 10px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: #376bcb;
+  border-radius: 10px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb:hover {
+  background: #376bcb;
+}
+
+.dark .sidebar-scroll::-webkit-scrollbar-track {
+  background: #374151;
+}
+
+.main-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.main-scroll::-webkit-scrollbar-track {
+  background: #f3f4f6;
+  border-radius: 10px;
+}
+
+.main-scroll::-webkit-scrollbar-thumb {
+  background: #376bcb;
+  border-radius: 10px;
+}
+
+.main-scroll::-webkit-scrollbar-thumb:hover {
+  background: #376bcb;
+}
+
+.dark .main-scroll::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+.table-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.table-scroll::-webkit-scrollbar-track {
+  background: #e5e7eb;
+  border-radius: 10px;
+}
+
+.table-scroll::-webkit-scrollbar-thumb {
+  background: #376bcb;
+  border-radius: 10px;
+}
+
+.dark .table-scroll::-webkit-scrollbar-track {
+  background: #374151;
+}
+
+.modal-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.modal-scroll::-webkit-scrollbar-track {
+  background: #e5e7eb;
+  border-radius: 10px;
+}
+
+.modal-scroll::-webkit-scrollbar-thumb {
+  background: #376bcb;
+  border-radius: 10px;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ============================================================
+   ✨ تصميم شات بوت "مساعد مشاريع التخرج" — n8n chat
+   باليت: أزرق أكاديمي عميق + ذهبي "الكرنيهة/التخرج" كلون مميز
+   ============================================================ */
+:root {
+  /* الألوان الأساسية */
+  --chat--color-primary: #1d4ed8;
+  --chat--color-primary-shade-50: #1742b0;
+  --chat--color-primary-shade-100: #123589;
+  --chat--color-secondary: #d4a017;
+  --chat--color-secondary-shade-50: #b8870f;
+  --chat--color-white: #ffffff;
+  --chat--color-light: #f5f7fb;
+  --chat--color-light-shade-50: #e7ebf5;
+  --chat--color-light-shade-100: #d9dfee;
+  --chat--color-medium: #94a3b8;
+  --chat--color-dark: #0f172a;
+  --chat--color-disabled: #b4bbc7;
+  --chat--color-typing: #6b7280;
+
+  /* الأبعاد العامة */
+  --chat--spacing: 1rem;
+  --chat--border-radius: 18px;
+  --chat--transition-duration: 0.25s;
+
+  /* نافذة الشات */
+  --chat--window--width: 400px;
+  --chat--window--height: 640px;
+
+  /* الهيدر */
+  --chat--header-height: auto;
+  --chat--header--padding: 1.25rem 1.5rem;
+  --chat--header--background: linear-gradient(135deg, #0b2a8a 0%, #1d4ed8 55%, #3a6bff 100%);
+  --chat--header--color: #ffffff;
+  --chat--header--border-top: none;
+  --chat--header--border-bottom: 3px solid var(--chat--color-secondary);
+  --chat--heading--font-weight: 700;
+  --chat--subtitle--line-height: 1.5;
+
+  /* زر الفتح/الإغلاق العائم */
+  --chat--toggle--background: #1d4ed8;
+  --chat--toggle--hover--background: #1742b0;
+  --chat--toggle--active--background: #123589;
+  --chat--toggle--color: #ffffff;
+  --chat--toggle--size: 64px;
+
+  /* الرسائل */
+  --chat--message--font-size: 0.95rem;
+  --chat--message--padding: 0.85rem 1.1rem;
+  --chat--message--border-radius: 16px;
+  --chat--message-line-height: 1.6;
+  --chat--message--bot--background: #ffffff;
+  --chat--message--bot--color: #1f2937;
+  --chat--message--bot--border: 1px solid #e7ebf5;
+  --chat--message--user--background: linear-gradient(135deg, #1d4ed8, #3a6bff);
+  --chat--message--user--color: #ffffff;
+  --chat--message--user--border: none;
+  --chat--message--pre--background: #0f172a0d;
+
+  /* صندوق الكتابة */
+  --chat--input--font-size: 0.95rem;
+  --chat--input--border: 1px solid #d9dfee;
+  --chat--input--border-active: 1px solid var(--chat--color-primary);
+  --chat--input--background: #ffffff;
+  --chat--input--text-color: #0f172a;
+  --chat--input--placeholder-color: #94a3b8;
+  --chat--input--send--button--background: var(--chat--color-primary);
+  --chat--input--send--button--color: #ffffff;
+  --chat--input--send--button--background-hover: var(--chat--color-primary-shade-50);
+
+  /* شاشة الترحيب */
+  --chat--start--button--background: var(--chat--color-primary);
+  --chat--start--button--color: #ffffff;
+}
+
+.dark {
+  --chat--color-light: #1f2937;
+  --chat--color-light-shade-50: #111827;
+  --chat--color-dark: #f5f7fb;
+  --chat--message--bot--background: #1f2937;
+  --chat--message--bot--color: #f1f5f9;
+  --chat--message--bot--border: 1px solid #374151;
+  --chat--input--background: #1f2937;
+  --chat--input--text-color: #f1f5f9;
+  --chat--input--border: 1px solid #374151;
+}
+
+/* خط عربي احترافي لكل عناصر الشات */
+#n8n-chat,
+.chat-window,
+.chat-message,
+.chat-input,
+.chat-header,
+#chat-suggestions-bar {
+  font-family: 'Cairo', 'Tajawal', system-ui, sans-serif !important;
+  direction: rtl;
+}
+
+/* تكبير ظل نافذة الشات وحوافها عشان تبان "خطيرة" واحترافية */
+.chat-window {
+  border-radius: 22px !important;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.25), 0 0 0 1px rgba(15, 23, 42, 0.04) !important;
+  animation: chatWindowIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes chatWindowIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* عنوان الهيدر مع لمسة الكاب الأكاديمي */
+.chat-header {
+  position: relative;
+}
+
+.chat-header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 90% -10%, rgba(212, 160, 23, 0.35), transparent 55%);
+  pointer-events: none;
+}
+
+.chat-header h1,
+.chat-header .chat-header-title {
+  font-weight: 800 !important;
+  letter-spacing: -0.01em;
+}
+
+/* زر الفتح العائم: تدرج لوني + توهج خفيف عند الـ hover */
+.chat-window-toggle {
+  background: linear-gradient(135deg, #1d4ed8, #3a6bff) !important;
+  box-shadow: 0 10px 30px rgba(29, 78, 216, 0.45) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.chat-window-toggle:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 14px 36px rgba(29, 78, 216, 0.55) !important;
+}
+
+/* فقاعات الرسائل */
+.chat-message {
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.chat-message-from-user {
+  box-shadow: 0 4px 14px rgba(29, 78, 216, 0.25);
+}
+
+/* صندوق الكتابة */
+.chat-input {
+  border-top: 1px solid #e7ebf5 !important;
+  padding: 0.85rem 1rem !important;
+}
+
+.chat-input textarea {
+  border-radius: 14px !important;
+}
+
+.chat-input button[type="submit"] {
+  border-radius: 50% !important;
+  width: 40px !important;
+  height: 40px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.chat-input button[type="submit"]:hover {
+  transform: scale(1.08);
+}
+
+/* ============================================================
+   🟦 شريط أزرار الاقتراحات (Suggestion Chips)
+   بيتولّد ديناميكيًا من main.tsx فوق نافذة الشات
+   ============================================================ */
+.chat-suggestions-bar {
+  position: fixed;
+  bottom: 100px;
+  right: 24px;
+  z-index: 999;
+  display: none;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  max-width: 320px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  transform: translateY(8px);
+}
+
+.chat-suggestions-bar.is-visible {
+  display: flex;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.suggestion-chip {
+  font-family: 'Cairo', 'Tajawal', system-ui, sans-serif;
+  direction: rtl;
+  text-align: right;
+  background: #ffffff;
+  color: #1d4ed8;
+  border: 1px solid #d9dfee;
+  border-radius: 999px;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.suggestion-chip:hover {
+  background: linear-gradient(135deg, #1d4ed8, #3a6bff);
+  color: #ffffff;
+  border-color: transparent;
+  transform: translateX(-3px);
+  box-shadow: 0 8px 22px rgba(29, 78, 216, 0.35);
+}
+
+.suggestion-chip:active {
+  transform: scale(0.97);
+}
+
+.dark .suggestion-chip {
+  background: #1f2937;
+  color: #93c5fd;
+  border-color: #374151;
+}
+
+.dark .suggestion-chip:hover {
+  background: linear-gradient(135deg, #1d4ed8, #3a6bff);
+  color: #ffffff;
+}
+
+/* على الموبايل: الشريط يطلع فوق نافذة الشات بالعرض الكامل تقريبًا */
+@media (max-width: 480px) {
+  .chat-suggestions-bar {
+    right: 12px;
+    left: 12px;
+    bottom: 92px;
+    max-width: none;
+  }
+
+  .suggestion-chip {
+    white-space: normal;
+    text-align: right;
+  }
+}

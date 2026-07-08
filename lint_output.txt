@@ -1,0 +1,1195 @@
+
+> host-graduate-project@0.0.0 lint
+> eslint .
+
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/ProjectSplashScreen/ProjectSplashScreen.tsx
+    6:5   error  'useTheme' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         @typescript-eslint/no-unused-vars
+  241:42  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/ProjectSplashScreen/ProjectSplashScreen.tsx:241:42
+  239 |                                 borderRadius: '50%',
+  240 |                                 background: alpha(['#1e3c72', '#2a5298', '#4b79a1', '#6ab0e6', '#87CEEB'][i % 5], 0.1 + (i * 0.02)),
+> 241 |                                 left: `${Math.random() * 100}%`,
+      |                                          ^^^^^^^^^^^^^ Cannot call impure function
+  242 |                                 top: `${Math.random() * 100}%`,
+  243 |                                 animation: `float${i} ${8 + i}s linear infinite`,
+  244 |                                 [`@keyframes float${i}`]: {  react-hooks/purity
+  242:41  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/ProjectSplashScreen/ProjectSplashScreen.tsx:242:41
+  240 |                                 background: alpha(['#1e3c72', '#2a5298', '#4b79a1', '#6ab0e6', '#87CEEB'][i % 5], 0.1 + (i * 0.02)),
+  241 |                                 left: `${Math.random() * 100}%`,
+> 242 |                                 top: `${Math.random() * 100}%`,
+      |                                         ^^^^^^^^^^^^^ Cannot call impure function
+  243 |                                 animation: `float${i} ${8 + i}s linear infinite`,
+  244 |                                 [`@keyframes float${i}`]: {
+  245 |                                     '0%': {            react-hooks/purity
+  250:65  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/ProjectSplashScreen/ProjectSplashScreen.tsx:250:65
+  248 |                                     },
+  249 |                                     '100%': { 
+> 250 |                                         transform: `translate(${Math.random() * 200 - 100}px, ${Math.random() * 200 - 100}px) rotate(${360 * (i + 1)}deg)`,
+      |                                                                 ^^^^^^^^^^^^^ Cannot call impure function
+  251 |                                         opacity: 0.3,
+  252 |                                     },
+  253 |                                 },                                                                  react-hooks/purity
+  250:97  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/ProjectSplashScreen/ProjectSplashScreen.tsx:250:97
+  248 |                                     },
+  249 |                                     '100%': { 
+> 250 |                                         transform: `translate(${Math.random() * 200 - 100}px, ${Math.random() * 200 - 100}px) rotate(${360 * (i + 1)}deg)`,
+      |                                                                                                 ^^^^^^^^^^^^^ Cannot call impure function
+  251 |                                         opacity: 0.3,
+  252 |                                     },
+  253 |                                 },                                  react-hooks/purity
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/ProtecteRoute/ProtectRoute.tsx
+   7:43  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  15:66  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/common/Alert.tsx
+  16:45  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/loading/loading.tsx
+  4:28  error  'setLoadingMessage' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx
+   98:22  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:98:22
+   96 |                 {/* القائمة الرئيسية - قابلة للتمرير داخلياً */}
+   97 |                 <nav className="flex-1 overflow-y-auto p-4 space-y-1 custom-scrollbar">
+>  98 |                     <NavItem
+      |                      ^^^^^^^ This component is created during render
+   99 |                         href=""
+  100 |                         icon="dashboard"
+  101 |                         label="لوحة التحكم"
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:35:45
+  33 |
+  34 |     // مكون عنصر القائمة
+> 35 |     const NavItem: React.FC<NavItemProps> = ({
+     |                                             ^^
+> 36 |         href,
+     | ^^^^^^^^^^^^^
+> 37 |         icon,
+     …
+     | ^^^^^^^^^^^^^
+> 72 |         );
+     | ^^^^^^^^^^^^^
+> 73 |     };
+     | ^^^^^^ The component is created during render here
+  74 |
+  75 |     return (
+  76 |         <>                                                                                                                                                                                                                                                                react-hooks/static-components
+  105:22  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:105:22
+  103 |                     />
+  104 |
+> 105 |                     <NavItem
+      |                      ^^^^^^^ This component is created during render
+  106 |                         href="universities"
+  107 |                         icon="account_balance"
+  108 |                         label="الجامعات"
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:35:45
+  33 |
+  34 |     // مكون عنصر القائمة
+> 35 |     const NavItem: React.FC<NavItemProps> = ({
+     |                                             ^^
+> 36 |         href,
+     | ^^^^^^^^^^^^^
+> 37 |         icon,
+     …
+     | ^^^^^^^^^^^^^
+> 72 |         );
+     | ^^^^^^^^^^^^^
+> 73 |     };
+     | ^^^^^^ The component is created during render here
+  74 |
+  75 |     return (
+  76 |         <>                                                                                                                                                                                                                                                                                                                                                                                  react-hooks/static-components
+  113:22  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:113:22
+  111 |                     />
+  112 |
+> 113 |                     <NavItem
+      |                      ^^^^^^^ This component is created during render
+  114 |                         href="departments"
+  115 |                         icon="corporate_fare"
+  116 |                         label="الأقسام"
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:35:45
+  33 |
+  34 |     // مكون عنصر القائمة
+> 35 |     const NavItem: React.FC<NavItemProps> = ({
+     |                                             ^^
+> 36 |         href,
+     | ^^^^^^^^^^^^^
+> 37 |         icon,
+     …
+     | ^^^^^^^^^^^^^
+> 72 |         );
+     | ^^^^^^^^^^^^^
+> 73 |     };
+     | ^^^^^^ The component is created during render here
+  74 |
+  75 |     return (
+  76 |         <>                                                                                                                                                                                                                                                                                                                                                                                     react-hooks/static-components
+  120:22  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:120:22
+  118 |                     />
+  119 |
+> 120 |                     <NavItem
+      |                      ^^^^^^^ This component is created during render
+  121 |                         href="doctors"
+  122 |                         icon="psychology"
+  123 |                         label="الدكاترة"
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:35:45
+  33 |
+  34 |     // مكون عنصر القائمة
+> 35 |     const NavItem: React.FC<NavItemProps> = ({
+     |                                             ^^
+> 36 |         href,
+     | ^^^^^^^^^^^^^
+> 37 |         icon,
+     …
+     | ^^^^^^^^^^^^^
+> 72 |         );
+     | ^^^^^^^^^^^^^
+> 73 |     };
+     | ^^^^^^ The component is created during render here
+  74 |
+  75 |     return (
+  76 |         <>                                                                                                                                                                                                                                                                                                                                                                                            react-hooks/static-components
+  127:22  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:127:22
+  125 |                     />
+  126 |
+> 127 |                     <NavItem
+      |                      ^^^^^^^ This component is created during render
+  128 |                         href="projects"
+  129 |                         icon="folder_managed"
+  130 |                         label="المشاريع"
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:35:45
+  33 |
+  34 |     // مكون عنصر القائمة
+> 35 |     const NavItem: React.FC<NavItemProps> = ({
+     |                                             ^^
+> 36 |         href,
+     | ^^^^^^^^^^^^^
+> 37 |         icon,
+     …
+     | ^^^^^^^^^^^^^
+> 72 |         );
+     | ^^^^^^^^^^^^^
+> 73 |     };
+     | ^^^^^^ The component is created during render here
+  74 |
+  75 |     return (
+  76 |         <>                                                                                                                                                                                                                                                                                                                                                                                       react-hooks/static-components
+  134:22  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:134:22
+  132 |                     />
+  133 |
+> 134 |                     <NavItem
+      |                      ^^^^^^^ This component is created during render
+  135 |                         href="teams"
+  136 |                         icon="groups"
+  137 |                         label="الفِرَق"
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:35:45
+  33 |
+  34 |     // مكون عنصر القائمة
+> 35 |     const NavItem: React.FC<NavItemProps> = ({
+     |                                             ^^
+> 36 |         href,
+     | ^^^^^^^^^^^^^
+> 37 |         icon,
+     …
+     | ^^^^^^^^^^^^^
+> 72 |         );
+     | ^^^^^^^^^^^^^
+> 73 |     };
+     | ^^^^^^ The component is created during render here
+  74 |
+  75 |     return (
+  76 |         <>                                                                                                                                                                                                                                                                                                                                                                                                   react-hooks/static-components
+  141:22  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:141:22
+  139 |                     />
+  140 |
+> 141 |                     <NavItem
+      |                      ^^^^^^^ This component is created during render
+  142 |                         href="users"
+  143 |                         icon="group"
+  144 |                         label="المستخدمين"
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:35:45
+  33 |
+  34 |     // مكون عنصر القائمة
+> 35 |     const NavItem: React.FC<NavItemProps> = ({
+     |                                             ^^
+> 36 |         href,
+     | ^^^^^^^^^^^^^
+> 37 |         icon,
+     …
+     | ^^^^^^^^^^^^^
+> 72 |         );
+     | ^^^^^^^^^^^^^
+> 73 |     };
+     | ^^^^^^ The component is created during render here
+  74 |
+  75 |     return (
+  76 |         <>                                                                                                                                                                                                                                                                                                                                                                                                 react-hooks/static-components
+  148:22  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:148:22
+  146 |                     />
+  147 |
+> 148 |                     <NavItem
+      |                      ^^^^^^^ This component is created during render
+  149 |                         href="notifications"
+  150 |                         icon="notifications"
+  151 |                         label="الإشعارات"
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:35:45
+  33 |
+  34 |     // مكون عنصر القائمة
+> 35 |     const NavItem: React.FC<NavItemProps> = ({
+     |                                             ^^
+> 36 |         href,
+     | ^^^^^^^^^^^^^
+> 37 |         icon,
+     …
+     | ^^^^^^^^^^^^^
+> 72 |         );
+     | ^^^^^^^^^^^^^
+> 73 |     };
+     | ^^^^^^ The component is created during render here
+  74 |
+  75 |     return (
+  76 |         <>                                                                                                                                                                                                                                                                                                                                                                                  react-hooks/static-components
+  155:22  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:155:22
+  153 |                     />
+  154 |
+> 155 |                     <NavItem
+      |                      ^^^^^^^ This component is created during render
+  156 |                         href="profile"
+  157 |                         icon="person"
+  158 |                         label="الملف الشخصي"
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:35:45
+  33 |
+  34 |     // مكون عنصر القائمة
+> 35 |     const NavItem: React.FC<NavItemProps> = ({
+     |                                             ^^
+> 36 |         href,
+     | ^^^^^^^^^^^^^
+> 37 |         icon,
+     …
+     | ^^^^^^^^^^^^^
+> 72 |         );
+     | ^^^^^^^^^^^^^
+> 73 |     };
+     | ^^^^^^ The component is created during render here
+  74 |
+  75 |     return (
+  76 |         <>                                                                                                                                                                                                                                                                                                                                                                                            react-hooks/static-components
+  188:22  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:188:22
+  186 |             <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 border-t dark:border-gray-800 shadow-lg z-50">
+  187 |                 <div className="flex justify-around p-2 overflow-x-auto">
+> 188 |                     <NavItem href="" icon="dashboard" label="الرئيسية" />
+      |                      ^^^^^^^ This component is created during render
+  189 |                     <NavItem href="universities" icon="account_balance" label="الجامعات" />
+  190 |                     <NavItem href="departments" icon="corporate_fare" label="الأقسام" />
+  191 |                     <NavItem href="doctors" icon="psychology" label="الدكاترة" />
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:35:45
+  33 |
+  34 |     // مكون عنصر القائمة
+> 35 |     const NavItem: React.FC<NavItemProps> = ({
+     |                                             ^^
+> 36 |         href,
+     | ^^^^^^^^^^^^^
+> 37 |         icon,
+     …
+     | ^^^^^^^^^^^^^
+> 72 |         );
+     | ^^^^^^^^^^^^^
+> 73 |     };
+     | ^^^^^^ The component is created during render here
+  74 |
+  75 |     return (
+  76 |         <>  react-hooks/static-components
+  189:22  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:189:22
+  187 |                 <div className="flex justify-around p-2 overflow-x-auto">
+  188 |                     <NavItem href="" icon="dashboard" label="الرئيسية" />
+> 189 |                     <NavItem href="universities" icon="account_balance" label="الجامعات" />
+      |                      ^^^^^^^ This component is created during render
+  190 |                     <NavItem href="departments" icon="corporate_fare" label="الأقسام" />
+  191 |                     <NavItem href="doctors" icon="psychology" label="الدكاترة" />
+  192 |                     <NavItem href="projects" icon="folder_managed" label="المشاريع" />
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:35:45
+  33 |
+  34 |     // مكون عنصر القائمة
+> 35 |     const NavItem: React.FC<NavItemProps> = ({
+     |                                             ^^
+> 36 |         href,
+     | ^^^^^^^^^^^^^
+> 37 |         icon,
+     …
+     | ^^^^^^^^^^^^^
+> 72 |         );
+     | ^^^^^^^^^^^^^
+> 73 |     };
+     | ^^^^^^ The component is created during render here
+  74 |
+  75 |     return (
+  76 |         <>                                                        react-hooks/static-components
+  190:22  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:190:22
+  188 |                     <NavItem href="" icon="dashboard" label="الرئيسية" />
+  189 |                     <NavItem href="universities" icon="account_balance" label="الجامعات" />
+> 190 |                     <NavItem href="departments" icon="corporate_fare" label="الأقسام" />
+      |                      ^^^^^^^ This component is created during render
+  191 |                     <NavItem href="doctors" icon="psychology" label="الدكاترة" />
+  192 |                     <NavItem href="projects" icon="folder_managed" label="المشاريع" />
+  193 |                     <NavItem href="teams" icon="groups" label="الفرق" />
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:35:45
+  33 |
+  34 |     // مكون عنصر القائمة
+> 35 |     const NavItem: React.FC<NavItemProps> = ({
+     |                                             ^^
+> 36 |         href,
+     | ^^^^^^^^^^^^^
+> 37 |         icon,
+     …
+     | ^^^^^^^^^^^^^
+> 72 |         );
+     | ^^^^^^^^^^^^^
+> 73 |     };
+     | ^^^^^^ The component is created during render here
+  74 |
+  75 |     return (
+  76 |         <>                                                         react-hooks/static-components
+  191:22  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:191:22
+  189 |                     <NavItem href="universities" icon="account_balance" label="الجامعات" />
+  190 |                     <NavItem href="departments" icon="corporate_fare" label="الأقسام" />
+> 191 |                     <NavItem href="doctors" icon="psychology" label="الدكاترة" />
+      |                      ^^^^^^^ This component is created during render
+  192 |                     <NavItem href="projects" icon="folder_managed" label="المشاريع" />
+  193 |                     <NavItem href="teams" icon="groups" label="الفرق" />
+  194 |                     <NavItem href="users" icon="group" label="المستخدمين" />
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:35:45
+  33 |
+  34 |     // مكون عنصر القائمة
+> 35 |     const NavItem: React.FC<NavItemProps> = ({
+     |                                             ^^
+> 36 |         href,
+     | ^^^^^^^^^^^^^
+> 37 |         icon,
+     …
+     | ^^^^^^^^^^^^^
+> 72 |         );
+     | ^^^^^^^^^^^^^
+> 73 |     };
+     | ^^^^^^ The component is created during render here
+  74 |
+  75 |     return (
+  76 |         <>                                                      react-hooks/static-components
+  192:22  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:192:22
+  190 |                     <NavItem href="departments" icon="corporate_fare" label="الأقسام" />
+  191 |                     <NavItem href="doctors" icon="psychology" label="الدكاترة" />
+> 192 |                     <NavItem href="projects" icon="folder_managed" label="المشاريع" />
+      |                      ^^^^^^^ This component is created during render
+  193 |                     <NavItem href="teams" icon="groups" label="الفرق" />
+  194 |                     <NavItem href="users" icon="group" label="المستخدمين" />
+  195 |                     <NavItem href="profile" icon="person" label="الملف" />
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:35:45
+  33 |
+  34 |     // مكون عنصر القائمة
+> 35 |     const NavItem: React.FC<NavItemProps> = ({
+     |                                             ^^
+> 36 |         href,
+     | ^^^^^^^^^^^^^
+> 37 |         icon,
+     …
+     | ^^^^^^^^^^^^^
+> 72 |         );
+     | ^^^^^^^^^^^^^
+> 73 |     };
+     | ^^^^^^ The component is created during render here
+  74 |
+  75 |     return (
+  76 |         <>                                                                       react-hooks/static-components
+  193:22  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:193:22
+  191 |                     <NavItem href="doctors" icon="psychology" label="الدكاترة" />
+  192 |                     <NavItem href="projects" icon="folder_managed" label="المشاريع" />
+> 193 |                     <NavItem href="teams" icon="groups" label="الفرق" />
+      |                      ^^^^^^^ This component is created during render
+  194 |                     <NavItem href="users" icon="group" label="المستخدمين" />
+  195 |                     <NavItem href="profile" icon="person" label="الملف" />
+  196 |                 </div>
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:35:45
+  33 |
+  34 |     // مكون عنصر القائمة
+> 35 |     const NavItem: React.FC<NavItemProps> = ({
+     |                                             ^^
+> 36 |         href,
+     | ^^^^^^^^^^^^^
+> 37 |         icon,
+     …
+     | ^^^^^^^^^^^^^
+> 72 |         );
+     | ^^^^^^^^^^^^^
+> 73 |     };
+     | ^^^^^^ The component is created during render here
+  74 |
+  75 |     return (
+  76 |         <>                                                                                                                                         react-hooks/static-components
+  194:22  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:194:22
+  192 |                     <NavItem href="projects" icon="folder_managed" label="المشاريع" />
+  193 |                     <NavItem href="teams" icon="groups" label="الفرق" />
+> 194 |                     <NavItem href="users" icon="group" label="المستخدمين" />
+      |                      ^^^^^^^ This component is created during render
+  195 |                     <NavItem href="profile" icon="person" label="الملف" />
+  196 |                 </div>
+  197 |             </div>
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:35:45
+  33 |
+  34 |     // مكون عنصر القائمة
+> 35 |     const NavItem: React.FC<NavItemProps> = ({
+     |                                             ^^
+> 36 |         href,
+     | ^^^^^^^^^^^^^
+> 37 |         icon,
+     …
+     | ^^^^^^^^^^^^^
+> 72 |         );
+     | ^^^^^^^^^^^^^
+> 73 |     };
+     | ^^^^^^ The component is created during render here
+  74 |
+  75 |     return (
+  76 |         <>                                                                                                                                                                                                        react-hooks/static-components
+  195:22  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:195:22
+  193 |                     <NavItem href="teams" icon="groups" label="الفرق" />
+  194 |                     <NavItem href="users" icon="group" label="المستخدمين" />
+> 195 |                     <NavItem href="profile" icon="person" label="الملف" />
+      |                      ^^^^^^^ This component is created during render
+  196 |                 </div>
+  197 |             </div>
+  198 |         </>
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarAdmin/SideBarAdmin.tsx:35:45
+  33 |
+  34 |     // مكون عنصر القائمة
+> 35 |     const NavItem: React.FC<NavItemProps> = ({
+     |                                             ^^
+> 36 |         href,
+     | ^^^^^^^^^^^^^
+> 37 |         icon,
+     …
+     | ^^^^^^^^^^^^^
+> 72 |         );
+     | ^^^^^^^^^^^^^
+> 73 |     };
+     | ^^^^^^ The component is created during render here
+  74 |
+  75 |     return (
+  76 |         <>                                                                                                                                                                                                                                                                                   react-hooks/static-components
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarDoctor/SideBarDoctor.tsx
+   38:9   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarDoctor/SideBarDoctor.tsx:38:9
+  36 |     useEffect(() => {
+  37 |         const isDark = document.documentElement.classList.contains('dark');
+> 38 |         setIsDarkMode(isDark);
+     |         ^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  39 |
+  40 |         // Close mobile menu on route change
+  41 |         setIsMobileMenuOpen(false);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             react-hooks/set-state-in-effect
+   54:9   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarDoctor/SideBarDoctor.tsx:54:9
+  52 |
+  53 |     useEffect(() => {
+> 54 |         loadProfile();
+     |         ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  55 |     }, []);
+  56 |     
+  57 |     // Handle logout                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              react-hooks/set-state-in-effect
+   65:11  error  'toggleDarkMode' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                @typescript-eslint/no-unused-vars
+  171:14  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarDoctor/SideBarDoctor.tsx:171:14
+  169 |         <>
+  170 |             {/* Mobile Header */}
+> 171 |             <MobileHeader />
+      |              ^^^^^^^^^^^^ This component is created during render
+  172 |
+  173 |             {/* Mobile Menu Overlay */}
+  174 |             {isMobileMenuOpen && (
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/components/sideBarDoctor/SideBarDoctor.tsx:107:26
+  105 |
+  106 |     // Mobile Header Component
+> 107 |     const MobileHeader = () => (
+      |                          ^^^^^^^
+> 108 |         <div className="lg:hidden fixed top-0 right-0 left-0 z-50 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 shadow-sm">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 109 |             <div className="flex items-center justify-between px-4 py-3">
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 165 |         </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 166 |     );
+      | ^^^^^^ The component is created during render here
+  167 |
+  168 |     return (
+  169 |         <>  react-hooks/static-components
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/contexts/language.context.tsx
+  11:14  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/AdminHome/DashboardManagement.tsx
+  11:56  error  'refresh' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/AdminHome/RecentActivities.tsx
+  6:17  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/AdminService/Department.service.ts
+   95:65  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  102:38  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/AdminService/Doctor.service.ts
+  43:27  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/AdminService/Notification.service.ts
+  36:43  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  41:36  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/AdminService/ProfileAdmin.service.ts
+  26:33  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  72:31  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  72:45  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  81:32  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  91:33  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/AdminService/Project.service.ts
+   53:27  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  100:33  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  111:38  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  122:37  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/AdminService/Team.service.ts
+   51:33  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   53:27  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   79:28  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   85:48  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   97:37  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  108:34  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  119:38  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  130:37  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/AdminService/User.service.ts
+    3:45  error  'UpdateRoleData' is defined but never used  @typescript-eslint/no-unused-vars
+   53:27  error  Unexpected any. Specify a different type    @typescript-eslint/no-explicit-any
+  105:28  error  Unexpected any. Specify a different type    @typescript-eslint/no-explicit-any
+  111:48  error  Unexpected any. Specify a different type    @typescript-eslint/no-explicit-any
+  123:38  error  Unexpected any. Specify a different type    @typescript-eslint/no-explicit-any
+  134:69  error  Unexpected any. Specify a different type    @typescript-eslint/no-explicit-any
+  147:37  error  Unexpected any. Specify a different type    @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/Department/DepartmentCard.tsx
+  3:30  error  'Building' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/Department/DepartmentFilters.tsx
+  12:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/Department/DepartmentManagement.tsx
+  17:9  error  'departments' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/Department/DepartmentModal.tsx
+  12:19  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           @typescript-eslint/no-explicit-any
+  13:14  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           @typescript-eslint/no-explicit-any
+  26:5   error    'doctors' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                @typescript-eslint/no-unused-vars
+  27:5   error    'selectedUniversityId' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   @typescript-eslint/no-unused-vars
+  47:17  error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/Department/DepartmentModal.tsx:47:17
+  45 |         if (isOpen) {
+  46 |             if (editingDepartment) {
+> 47 |                 setFormData({
+     |                 ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  48 |                     departmentName: editingDepartment.departmentName,
+  49 |                     universityId: editingDepartment.universityId,
+  50 |                     headDoctorId: editingDepartment.headDoctorId,  react-hooks/set-state-in-effect
+  66:8   warning  React Hook useEffect has missing dependencies: 'editingDepartment' and 'onUniversityChange'. Either include them or remove the dependency array. If 'onUniversityChange' changes too often, find the parent component that defines it and wrap that definition in useCallback                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      react-hooks/exhaustive-deps
+  83:11  error    'handleHeadDoctorChange' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        @typescript-eslint/no-unused-vars
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/Department/DepartmentTable.tsx
+  3:47  error  'Crown' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/DoctorsAdmin/DoctorsFilters.tsx
+  17:52  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/Notification/NotificationCard.tsx
+  6:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/Notification/NotificationFilters.tsx
+   6:20  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   7:30  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  32:72  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/Notification/NotificationStats.tsx
+  6:12  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/Notification/NotificationsManagement.tsx
+  13:9   error  'notifications' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  18:9   error  'markAllAsRead' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  20:9   error  'deleteAllRead' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  25:56  error  Unexpected any. Specify a different type            @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/ProjectAdmin/ProjectCard.tsx
+  2:17  error  'useState' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/ProjectAdmin/ProjectFilters.tsx
+   9:14  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  10:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  11:18  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/ProjectAdmin/ProjectsManagement.tsx
+   2:36  error  'useEffect' is defined but never used          @typescript-eslint/no-unused-vars
+  14:9   error  'projects' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  24:9   error  'refresh' is assigned a value but never used   @typescript-eslint/no-unused-vars
+  45:41  error  Unexpected any. Specify a different type       @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/PrpfileAdmin/AccountInfo.tsx
+  7:14  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/PrpfileAdmin/ChangePasswordModal.tsx
+   9:22  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   9:38  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  19:46  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/PrpfileAdmin/EditProfileModal.tsx
+   9:22  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    @typescript-eslint/no-explicit-any
+   9:38  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    @typescript-eslint/no-explicit-any
+  10:14  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    @typescript-eslint/no-explicit-any
+  21:46  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    @typescript-eslint/no-explicit-any
+  29:13  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/PrpfileAdmin/EditProfileModal.tsx:29:13
+  27 |     useEffect(() => {
+  28 |         if (profile) {
+> 29 |             setFormData({
+     |             ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  30 |                 name: profile.name,
+  31 |                 email: profile.email,
+  32 |                 phone: profile.phone || '',  react-hooks/set-state-in-effect
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/PrpfileAdmin/ProfileHeader.tsx
+   6:14  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       @typescript-eslint/no-explicit-any
+  34:17  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/PrpfileAdmin/ProfileHeader.tsx:34:17
+  32 |         if (!uploading && localUploading) {
+  33 |             if (uploadSuccess) {
+> 34 |                 setLocalSuccess(true);
+     |                 ^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  35 |                 // بعد 2 ثانية، نزيل رسالة النجاح ونعرض الصورة النهائية
+  36 |                 setTimeout(() => {
+  37 |                     setLocalSuccess(false);  react-hooks/set-state-in-effect
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/PrpfileAdmin/ProfileManagement.tsx
+  34:12  error  'isDeleting' is assigned a value but never used   @typescript-eslint/no-unused-vars
+  36:12  error  'isBackingUp' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/PrpfileAdmin/ProfileStats.tsx
+  12:14  error  Unexpected any. Specify a different type                 @typescript-eslint/no-explicit-any
+  16:11  error  'statsCards' is assigned a value but never used          @typescript-eslint/no-unused-vars
+  22:20  error  'universityProjects' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  22:56  error  'refresh' is assigned a value but never used             @typescript-eslint/no-unused-vars
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/TeamAdmin/TeamFilters.tsx
+  15:18  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/TeamAdmin/TeamsManagement.tsx
+  21:9   error  'teams' is assigned a value but never used    @typescript-eslint/no-unused-vars
+  30:9   error  'refresh' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  52:35  error  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+  57:35  error  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/UnvirstyAdmin/UniversityModal.tsx
+  19:13  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/UnvirstyAdmin/UniversityModal.tsx:19:13
+  17 |     useEffect(() => {
+  18 |         if (editingUniversity) {
+> 19 |             setFormData({
+     |             ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  20 |                 universityName: editingUniversity.name,
+  21 |                 location: editingUniversity.location,
+  22 |                 contactEmail: editingUniversity.email,  react-hooks/set-state-in-effect
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/UnvirstyAdmin/UnvirstyAdmin.tsx
+  17:9  error  'universities' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/Users/UserCard.tsx
+  15:97  error  'onDelete' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/Users/UserDetailsModal.tsx
+  46:11  error  'getRoleIcon' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/Users/UserFilters.tsx
+   9:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  10:18  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  18:5   error  'universities' is defined but never used  @typescript-eslint/no-unused-vars
+  19:5   error  'departments' is defined but never used   @typescript-eslint/no-unused-vars
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/Users/UserModal.tsx
+   8:22  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   @typescript-eslint/no-explicit-any
+   9:18  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   @typescript-eslint/no-explicit-any
+  11:19  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   @typescript-eslint/no-explicit-any
+  12:18  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   @typescript-eslint/no-explicit-any
+  28:46  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   @typescript-eslint/no-explicit-any
+  50:13  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/Users/UserModal.tsx:50:13
+  48 |     useEffect(() => {
+  49 |         if (editingUser) {
+> 50 |             setFormData({
+     |             ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  51 |                 fullName: editingUser.fullName || editingUser.name || '',
+  52 |                 email: editingUser.email || '',
+  53 |                 role: editingUser.role || 'student',  react-hooks/set-state-in-effect
+  74:28  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   @typescript-eslint/no-explicit-any
+  83:28  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   @typescript-eslint/no-explicit-any
+  84:26  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Admin/Users/UsersManagement.tsx
+    3:10  error  'Plus' is defined but never used              @typescript-eslint/no-unused-vars
+   31:9   error  'refresh' is assigned a value but never used  @typescript-eslint/no-unused-vars
+   43:52  error  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+   66:36  error  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+   75:36  error  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+  101:47  error  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Doctore/DoctorServices/allprojectShowDoctor.ts
+  108:87  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Doctore/DoctorServices/doctorProfileService.ts
+   18:25  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   82:32  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  118:25  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Doctore/DoctorServices/studentsService.ts
+   96:87  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  112:80  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Doctore/DoctorServices/supervisionService.ts
+  141:50  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Doctore/DoctorServices/teamsService.ts
+  1:10  error  'api' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Doctore/HomeDoctor/HomeDoctor.tsx
+   9:8   error  'MobileNavigation' is defined but never used   @typescript-eslint/no-unused-vars
+  14:12  error  'error' is assigned a value but never used     @typescript-eslint/no-unused-vars
+  25:12  error  'isMobile' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  44:27  error  Unexpected any. Specify a different type       @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Doctore/ProfileDoctor/ProfileDoctor.tsx
+    8:36  error  'toastInfo' is defined but never used                       @typescript-eslint/no-unused-vars
+   26:32  error  'setAllSpecializations' is assigned a value but never used  @typescript-eslint/no-unused-vars
+   59:27  error  Unexpected any. Specify a different type                    @typescript-eslint/no-explicit-any
+  163:30  error  'error' is defined but never used                           @typescript-eslint/no-unused-vars
+  168:23  error  Unexpected any. Specify a different type                    @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Doctore/Projects/ProjectDetails.tsx
+   31:8   warning  React Hook useEffect has a missing dependency: 'fetchProjectDetails'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+   68:47  error    'name' is defined but never used                                                                                        @typescript-eslint/no-unused-vars
+  463:59  error    Unexpected any. Specify a different type                                                                                @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Doctore/Projects/Proojects.tsx
+    6:10  error    'FilterState' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+  147:8   warning  React Hook useCallback has a missing dependency: 'transformProjectData'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Doctore/RequestOrder/RequestDetailsModal.tsx
+  23:8  warning  React Hook useEffect has a missing dependency: 'fetchRequestDetails'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Doctore/RequestOrder/RequestOrder.tsx
+    5:5   error    'getPendingRequests' is defined but never used                                                                                                                                                                                                              @typescript-eslint/no-unused-vars
+  121:25  error    Unexpected any. Specify a different type                                                                                                                                                                                                                    @typescript-eslint/no-explicit-any
+  143:8   warning  React Hook useCallback has an unnecessary dependency: 'page'. Either exclude it or remove the dependency array                                                                                                                                              react-hooks/exhaustive-deps
+  163:8   warning  React Hook useEffect has an unnecessary dependency: 'getRejectedRequests'. Either exclude it or remove the dependency array. Outer scope values like 'getRejectedRequests' aren't valid dependencies because mutating them doesn't re-render the component  react-hooks/exhaustive-deps
+  174:13  error    'filtered' is never reassigned. Use 'const' instead                                                                                                                                                                                                         prefer-const
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Doctore/Studends/StudentDetailsModal.tsx
+  37:8  warning  React Hook useEffect has a missing dependency: 'fetchStudentDetails'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Doctore/Studends/Students.tsx
+   58:47  error    Unexpected any. Specify a different type                                                                                   @typescript-eslint/no-explicit-any
+  110:8   warning  React Hook useCallback has a missing dependency: 'transformStudentData'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  121:13  error    'filtered' is never reassigned. Use 'const' instead                                                                        prefer-const
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Doctore/Teams/TeamDetailsModel.tsx
+  46:12  error    'selectedStatus' is assigned a value but never used                                                                  @typescript-eslint/no-unused-vars
+  77:8   warning  React Hook useEffect has a missing dependency: 'fetchTeamDetails'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Doctore/Teams/Teams.tsx
+    6:18  error    'ITeam' is defined but never used                                                                                       @typescript-eslint/no-unused-vars
+   59:46  error    Unexpected any. Specify a different type                                                                                @typescript-eslint/no-explicit-any
+   65:47  error    Unexpected any. Specify a different type                                                                                @typescript-eslint/no-explicit-any
+  147:8   warning  React Hook useCallback has a missing dependency: 'transformTeamData'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  158:13  error    'filtered' is never reassigned. Use 'const' instead                                                                     prefer-const
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Student/AllProjects/ProjectDetailsModal.tsx
+  3:95   error  'CalendarIcon' is defined but never used  @typescript-eslint/no-unused-vars
+  3:109  error  'Clock' is defined but never used         @typescript-eslint/no-unused-vars
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Student/AllProjects/ProjectFilters.tsx
+  11:90  error  'onReset' is defined but never used               @typescript-eslint/no-unused-vars
+  19:11  error  'typeOptions' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Student/Home/Home.tsx
+   6:5   error  'ProjectStatsApiResponse' is defined but never used   @typescript-eslint/no-unused-vars
+   7:5   error  'ActiveProjectApiResponse' is defined but never used  @typescript-eslint/no-unused-vars
+   8:5   error  'ProjectsListApiResponse' is defined but never used   @typescript-eslint/no-unused-vars
+  86:23  error  Unexpected any. Specify a different type              @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Student/MyProject/MyProject.tsx
+   97:25  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  184:18  error  'error' is defined but never used         @typescript-eslint/no-unused-vars
+  184:25  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Student/Profile/Profile.tsx
+  103:25  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  128:62  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Student/ProjectDetails/ProjectDetails.tsx
+    3:21  error  'Link' is defined but never used          @typescript-eslint/no-unused-vars
+   46:44  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   67:27  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  237:63  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  362:70  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Student/Supervisor/Supervisor.tsx
+  252:25  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Student/Supervisor/TeamMembersForm.tsx
+  2:17  error  'useState' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Student/UpdateProject/UpdateProject.tsx
+  159:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Student/services/PrijectDetailService.ts
+  15:13  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  84:39  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Student/services/ProjectUpdateService.ts
+   17:12  error  Unexpected any. Specify a different type            @typescript-eslint/no-explicit-any
+   18:13  error  Unexpected any. Specify a different type            @typescript-eslint/no-explicit-any
+   64:41  error  Unexpected any. Specify a different type            @typescript-eslint/no-explicit-any
+   65:17  error  'headers' is never reassigned. Use 'const' instead  prefer-const
+   65:26  error  Unexpected any. Specify a different type            @typescript-eslint/no-explicit-any
+  175:19  error  'url' is assigned a value but never used            @typescript-eslint/no-unused-vars
+  188:39  error  Unexpected any. Specify a different type            @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Student/services/Supervisor.ts
+  71:21  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Student/services/authService.ts
+   19:21  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   51:21  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   78:21  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  100:21  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  122:21  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Student/services/homeService.ts
+   44:49  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   59:32  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   59:38  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  196:27  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Student/services/myTeamService.ts
+   62:49  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  157:39  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Student/services/studentProjectService.ts
+   62:27  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  102:22  error  'err' is defined but never used           @typescript-eslint/no-unused-vars
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Student/services/uploadeFiles.ts
+   12:13  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   18:13  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  164:16  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  203:39  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Student/types/home.interface.ts
+  18:13  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  71:13  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  89:13  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Student/types/myTeam.interface.ts
+  34:13  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/Student/types/project.types.ts
+  30:12  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/auth/forgetPassword.tsx
+  52:25  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/auth/login.tsx
+  56:25  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/auth/resetPassword.tsx
+  73:25  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/auth/singUpForm.tsx
+  110:68  error  Unexpected any. Specify a different type                @typescript-eslint/no-explicit-any
+  150:68  error  Unexpected any. Specify a different type                @typescript-eslint/no-explicit-any
+  183:11  error  'validatePasswords' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  251:25  error  Unexpected any. Specify a different type                @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/features/auth/verify.tsx
+  51:25  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/hooks/useDashboard.ts
+  35:23  error    Unexpected any. Specify a different type                                                                     @typescript-eslint/no-explicit-any
+  56:23  error    Unexpected any. Specify a different type                                                                     @typescript-eslint/no-explicit-any
+  59:8   warning  React Hook useCallback has a missing dependency: 'colors'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  70:23  error    Unexpected any. Specify a different type                                                                     @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/hooks/useDepartments.ts
+    3:47  error  'DepartmentApiData' is defined but never used  @typescript-eslint/no-unused-vars
+    9:54  error  Unexpected any. Specify a different type       @typescript-eslint/no-explicit-any
+   10:44  error  Unexpected any. Specify a different type       @typescript-eslint/no-explicit-any
+   26:52  error  Unexpected any. Specify a different type       @typescript-eslint/no-explicit-any
+   74:23  error  Unexpected any. Specify a different type       @typescript-eslint/no-explicit-any
+   95:23  error  Unexpected any. Specify a different type       @typescript-eslint/no-explicit-any
+  108:23  error  Unexpected any. Specify a different type       @typescript-eslint/no-explicit-any
+  123:23  error  Unexpected any. Specify a different type       @typescript-eslint/no-explicit-any
+  142:23  error  Unexpected any. Specify a different type       @typescript-eslint/no-explicit-any
+  162:23  error  Unexpected any. Specify a different type       @typescript-eslint/no-explicit-any
+  182:23  error  Unexpected any. Specify a different type       @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/hooks/useFilteredDoctors.ts
+   5:14  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  31:24  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/hooks/useNotifications.ts
+   4:29  error  'NotificationStats' is defined but never used          @typescript-eslint/no-unused-vars
+   4:48  error  'NotificationFilters' is defined but never used        @typescript-eslint/no-unused-vars
+   8:27  error  'setNotifications' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  17:19  error  'data' is assigned a value but never used              @typescript-eslint/no-unused-vars
+  19:23  error  Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  32:23  error  Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  47:23  error  Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  62:23  error  Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  77:23  error  Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  86:38  error  Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  95:55  error  Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/hooks/useProfileAdmin.ts
+    6:44  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   21:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   29:56  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   35:31  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   39:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   69:31  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   80:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   91:53  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   98:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  113:31  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  116:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  136:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  161:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  181:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/hooks/useProjects.ts
+   8:44  error  Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+   9:54  error  Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+  10:52  error  Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+  14:21  error  'setSuccess' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  33:23  error  Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+  47:23  error  Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+  65:23  error  Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/hooks/useTeams.ts
+   15:52  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   16:46  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   17:54  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   18:52  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   41:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   55:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   75:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   81:50  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   89:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   99:73  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  107:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  125:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/hooks/useUniversities.ts
+   55:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   70:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   87:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  126:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/hooks/useUsers.ts
+    8:54  error  Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+    9:12  error  'departments' is assigned a value but never used     @typescript-eslint/no-unused-vars
+    9:25  error  'setDepartments' is assigned a value but never used  @typescript-eslint/no-unused-vars
+    9:52  error  Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+   10:68  error  Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+   34:23  error  Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+   48:23  error  Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+   60:23  error  Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+   77:23  error  Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+   94:23  error  Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+  112:23  error  Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+  122:50  error  Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+  130:23  error  Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+  140:73  error  Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+  148:23  error  Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+  166:23  error  Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/main.tsx
+  140:10  error  Fast refresh only works when a file has exports. Move your component(s) to a separate file  react-refresh/only-export-components
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/utlis/decoded.ts
+  7:14  error  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/utlis/fileUtlils.ts
+   10:10  error  Unexpected control character(s) in regular expression: \x00  no-control-regex
+  183:15  error  'pathname' is assigned a value but never used                @typescript-eslint/no-unused-vars
+
+/home/ayaanwar/projects/gradution_project/Frontend-Project-Graduate/src/utlis/tost.ts
+  3:41  error  'Toast' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 322 problems (311 errors, 11 warnings)
+  4 errors and 0 warnings potentially fixable with the `--fix` option.
+
