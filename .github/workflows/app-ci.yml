@@ -69,15 +69,20 @@ jobs:
       # -------------------------
       # Phase 7 - Unit Tests + Coverage
       # -------------------------
+      # -------------------------
+      # Phase 7 - Unit Tests + Coverage
+      # -------------------------
       - name: Run Unit Tests with Coverage
         run: npm run coverage
 
-
-      - name: Verify Coverage
+      - name: Check for lcov.info
         run: |
-          ls -la coverage
-          test -f coverage/lcov.info
-
+          if [ -f coverage/lcov.info ]; then
+            echo "lcov.info found!"
+          else
+            echo "lcov.info NOT found. Listing directory:"
+            ls -R coverage
+          fi
 
       - name: Upload Coverage Report
         if: always()
@@ -85,7 +90,6 @@ jobs:
         with:
           name: frontend-coverage-report
           path: coverage/
-
 
       # -------------------------
       # Phase 8 - SonarCloud Analysis
