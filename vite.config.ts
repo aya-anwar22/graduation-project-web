@@ -7,22 +7,15 @@ export default defineConfig({
     react(),
     tailwindcss()
   ],
-
   test: {
     environment: 'jsdom',
-
     coverage: {
       provider: 'v8',
       enabled: true,
-
-      reporter: [
-        'text',
-        'lcov'
-      ],
-
+      reporter: ['text', 'lcov'],
+      // التأكد من أن المسار يبدأ من الجذر
       reportsDirectory: './coverage',
-
-      clean: true
+      clean: true,
     }
   }
 })
