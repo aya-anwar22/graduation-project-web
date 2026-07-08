@@ -11,7 +11,8 @@
     "preview": "vite preview",
     "test": "vitest",
     "test:run": "vitest run",
-    "coverage": "vitest run --coverage --config vitest.config.ts",
+    "coverage": "vitest run --coverage.enabled=true --coverage.provider=v8 --coverage.reporter=lcov",
+
     "test:ci": "vitest run --coverage"
   },
   "dependencies": {
