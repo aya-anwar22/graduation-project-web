@@ -1,5 +1,5 @@
 // components/SimpleProjectSplash.tsx
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Box,
     Typography,
@@ -24,21 +24,18 @@ const SimpleProjectSplash: React.FC<SimpleProjectSplashProps> = ({
 
     // نحسب القيم العشوائية للجزيئات مرة واحدة فقط، مش في كل render،
     // عشان Math.random() function غير نقية (impure) ومينفعش تتنادى أثناء الـ render.
-    const particles = useMemo(
-        () =>
-            [...Array(10)].map((_, i) => ({
-                size: 10 + i * 3,
-                color: ['#1e3c72', '#2a5298', '#4b79a1', '#6ab0e6', '#87CEEB'][i % 5],
-                opacityBase: 0.1 + i * 0.02,
-                left: Math.random() * 100,
-                top: Math.random() * 100,
-                translateX: Math.random() * 200 - 100,
-                translateY: Math.random() * 200 - 100,
-                duration: 8 + i,
-            })),
-        []
-    );
-
+const [particles] = useState(() =>
+    Array.from({ length: 10 }, (_, i) => ({
+        size: 10 + i * 3,
+        color: ['#1e3c72', '#2a5298', '#4b79a1', '#6ab0e6', '#87CEEB'][i % 5],
+        opacityBase: 0.1 + i * 0.02,
+        left: Math.random() * 100,
+        top: Math.random() * 100,
+        translateX: Math.random() * 200 - 100,
+        translateY: Math.random() * 200 - 100,
+        duration: 8 + i,
+    }))
+);
     useEffect(() => {
         // محاكاة التقدم
         const progressTimer = setInterval(() => {

@@ -6,8 +6,12 @@
 export const decodeArabicFileName = (fileName: string): string => {
     if (!fileName) return 'ملف';
     
-    // إذا كان الاسم يبدو عاديًا، ارجعه كما هو
-    if (!/[^\x00-\x7F]/.test(fileName)) {
+    // إذا كان الاسم كله ASCII، ارجعه كما هو (تجنب استخدام \x00 لتفادي ESLint Error)
+    const hasNonAscii = [...fileName].some(
+        (char) => char.charCodeAt(0) > 127
+    );
+
+    if (!hasNonAscii) {
         return fileName;
     }
     
@@ -54,8 +58,7 @@ export const decodeArabicFileName = (fileName: string): string => {
 export const extractFileName = (filePath: string): string => {
     try {
         const url = new URL(filePath);
-        const pathname = url.pathname;
-        const fileName = pathname.split('/').pop() || 'ملف';
+        const fileName = url.pathname.split('/').pop() || 'ملف';
         
         // استخدام الدالة الجديدة لفك الترميز
         const decodedName = decodeArabicFileName(fileName);
@@ -179,8 +182,7 @@ export const getFileTypeInfo = (fileType: string): {
  */
 export const getFileSizeInfo = (filePath: string): string => {
     try {
-        const url = new URL(filePath);
-        const pathname = url.pathname;
+        new URL(filePath);
         
         if (filePath.includes('cloudinary.com')) {
             return 'حجم متغير';
