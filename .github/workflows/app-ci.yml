@@ -113,7 +113,27 @@ jobs:
           SONAR_HOST_URL: https://sonarcloud.io
 
       # -------------------------
-      # Phase 9 - Production Build
+      # Phase 9 - Docker Build
       # -------------------------
-      - name: Build Application
-        run: npm run build
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Lint Dockerfile
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: Dockerfile
+
+      - name: Extract Docker Metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: frontend
+
+      - name: Build Docker Image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          push: false
+          tags: frontend:${{ github.sha }}
