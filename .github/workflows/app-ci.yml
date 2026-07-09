@@ -29,20 +29,24 @@ jobs:
         with:
           fetch-depth: 0
 
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "22.x"
           cache: npm
 
+
       - name: Install Dependencies
         run: npm ci
+
 
       # -------------------------
       # Phase 4 - Lint
       # -------------------------
       - name: Run Lint
         run: npm run lint:ci
+
 
       # -------------------------
       # Phase 6 - Dependency Scan
@@ -51,6 +55,7 @@ jobs:
         run: |
           npm audit --json > audit-report.json || true
 
+
       - name: Upload Audit Report
         if: always()
         uses: actions/upload-artifact@v4
@@ -58,10 +63,12 @@ jobs:
           name: npm-audit-report
           path: audit-report.json
 
+
       - name: Fail on Critical Vulnerabilities
         run: npm audit --audit-level=critical
 
-      # -------------------------
+
+  
       # Phase 7 - Unit Tests + Coverage
       # -------------------------
       - name: Run Unit Tests with Coverage
@@ -95,6 +102,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: https://sonarcloud.io
 
+
       - name: SonarCloud Quality Gate
         uses: SonarSource/sonarqube-quality-gate-action@v1.2.0
         timeout-minutes: 5
@@ -103,9 +111,11 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: https://sonarcloud.io
 
-      # -------------------------
+
+            # -------------------------
       # Phase 9 - Docker Build
       # -------------------------
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -122,10 +132,10 @@ jobs:
           push: false
           load: true
           tags: frontend:${{ github.sha }}
-
       # -------------------------
       # Phase 10 - SBOM
       # -------------------------
+
       - name: Install Syft
         uses: anchore/sbom-action/download-syft@v0
 
@@ -139,10 +149,12 @@ jobs:
         with:
           name: frontend-sbom
           path: frontend-sbom.spdx.json
+      
 
-      # -------------------------
+            # -------------------------
       # Phase 11 - Trivy Scan
       # -------------------------
+
       - name: Scan Docker Image with Trivy
         uses: aquasecurity/trivy-action@v0.36.0
         continue-on-error: true   # مؤقت - لحد ما نصلح الثغرات الحالية
@@ -157,6 +169,7 @@ jobs:
       # -------------------------
       # Phase 12 - Upload SARIF
       # -------------------------
+
       - name: Upload Trivy SARIF Report
         if: always()
         uses: github/codeql-action/upload-sarif@v3
@@ -173,21 +186,13 @@ jobs:
       # -------------------------
       # Phase 13 - Install Cosign
       # -------------------------
+
       - name: Install Cosign
         uses: sigstore/cosign-installer@v3
 
-      # -------------------------
+           # -------------------------
       # Phase 14 - Configure AWS
       # -------------------------
-      - name: Generate Image Version
-        id: version
-        run: |
-          # بياخد أقرب git tag على الـ commit الحالي (مثال: v1.0.0)
-          # لو مفيش tag أصلاً، بيرجع v0.0.0 كـ fallback
-          VERSION=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "Generated Version: $VERSION"
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -207,13 +212,12 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ${{ steps.login-ecr.outputs.registry }}/${{ vars.ECR_REPOSITORY }}:${{ env.VERSION }}
-            ${{ steps.login-ecr.outputs.registry }}/${{ vars.ECR_REPOSITORY }}:latest
             ${{ steps.login-ecr.outputs.registry }}/${{ vars.ECR_REPOSITORY }}:${{ github.sha }}
 
       # -------------------------
-      # Debug GitHub OIDC Token (safe, no secret leak)
+      # Debug GitHub OIDC Token
       # -------------------------
+
       - name: Check GitHub OIDC Token
         run: |
           echo "===== OIDC REQUEST URL ====="
@@ -229,11 +233,10 @@ jobs:
           fi
 
           echo ""
-          echo "===== OIDC ENDPOINT CHECK ====="
-          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+          echo "===== OIDC RESPONSE ====="
+          curl -s \
             -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
-            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=sigstore")
-          echo "OIDC endpoint responded with HTTP status: $HTTP_STATUS"
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=sigstore"
 
       # -------------------------
       # Phase 15 - Sign Image
@@ -241,19 +244,21 @@ jobs:
       - name: Check Cosign Version
         run: cosign version
 
+
       - name: Sign Docker Image
         env:
           COSIGN_EXPERIMENTAL: "1"
         run: |
           cosign sign --yes \
-            ${{ steps.login-ecr.outputs.registry }}/${{ vars.ECR_REPOSITORY }}:${{ env.VERSION }}
+            ${{ steps.login-ecr.outputs.registry }}/${{ vars.ECR_REPOSITORY }}:${{ github.sha }}
 
       # -------------------------
       # Phase 16 - Verify Signature
       # -------------------------
+
       - name: Verify Docker Image Signature
         run: |
           cosign verify \
             --certificate-identity "https://github.com/${{ github.repository }}/.github/workflows/app-ci.yml@refs/heads/main" \
             --certificate-oidc-issuer "https://token.actions.githubusercontent.com" \
-            ${{ steps.login-ecr.outputs.registry }}/${{ vars.ECR_REPOSITORY }}:${{ env.VERSION }}
+            ${{ steps.login-ecr.outputs.registry }}/${{ vars.ECR_REPOSITORY }}:${{ github.sha }}
