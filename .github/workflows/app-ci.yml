@@ -66,14 +66,11 @@ jobs:
         run: npm audit --audit-level=critical
 
 
-      # -------------------------
-      # Phase 7 - Unit Tests + Coverage
-      # -------------------------
-      # -------------------------
+  
       # Phase 7 - Unit Tests + Coverage
       # -------------------------
       - name: Run Unit Tests with Coverage
-        run: npm run coverage
+        run: npm run test:ci
 
       - name: Check for lcov.info
         run: |
@@ -112,7 +109,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: https://sonarcloud.io
 
-      # -------------------------
+            # -------------------------
       # Phase 9 - Docker Build
       # -------------------------
 
@@ -136,4 +133,24 @@ jobs:
           context: .
           file: ./Dockerfile
           push: false
-          tags: frontend:${{ github.sha }}
+          load: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+      # -------------------------
+      # Phase 10 - SBOM
+      # -------------------------
+
+      - name: Install Syft
+        uses: anchore/sbom-action/download-syft@v0
+
+      - name: Generate SBOM
+        run: |
+          syft frontend:${{ github.sha }} \
+            -o spdx-json=frontend-sbom.spdx.json
+
+      - name: Upload Frontend SBOM
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-sbom
+          path: frontend-sbom.spdx.json
