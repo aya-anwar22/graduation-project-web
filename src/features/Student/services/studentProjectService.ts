@@ -6,7 +6,7 @@ const getAuthToken = (): string | null => {
     return localStorage.getItem('token') || localStorage.getItem('accessToken') || null;
 };
 
-const url = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const url = import.meta.env.VITE_API_URL;
 
 const apiClient = axios.create({
     baseURL: `${url}/api/v1`,

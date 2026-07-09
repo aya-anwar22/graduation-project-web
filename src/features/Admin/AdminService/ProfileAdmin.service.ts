@@ -4,7 +4,7 @@ import axios, { type AxiosInstance } from 'axios';
 
 class ProfileService {
     private api: AxiosInstance;
-    private baseURL = 'http://localhost:3000/api/v1';
+    private baseURL = import.meta.env.VITE_API_URL;
 
     constructor() {
         this.api = axios.create({

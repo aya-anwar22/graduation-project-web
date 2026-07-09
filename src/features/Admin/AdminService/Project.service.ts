@@ -4,7 +4,7 @@ import type { Project, ProjectSummary, ProjectFilters, PaginatedResponse } from 
 
 class ProjectService {
     private api: AxiosInstance;
-    private baseURL = 'http://localhost:3000/api/v1';
+    private baseURL = import.meta.env.VITE_API_URL;
 
     constructor() {
         this.api = axios.create({
