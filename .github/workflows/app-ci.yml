@@ -241,6 +241,9 @@ jobs:
       # -------------------------
       # Phase 15 - Sign Image
       # -------------------------
+      - name: Check Cosign Version
+        run: cosign version
+
 
       - name: Sign Docker Image
         env:
