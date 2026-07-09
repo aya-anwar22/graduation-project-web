@@ -22,6 +22,9 @@ jobs:
       id-token: write
       security-events: write
 
+    env:
+      IMAGE_VERSION: v0.0.${{ github.run_number }}
+
     steps:
 
       - name: Checkout Repository
@@ -68,7 +71,7 @@ jobs:
         run: npm audit --audit-level=critical
 
 
-  
+
       # Phase 7 - Unit Tests + Coverage
       # -------------------------
       - name: Run Unit Tests with Coverage
@@ -112,7 +115,7 @@ jobs:
           SONAR_HOST_URL: https://sonarcloud.io
 
 
-            # -------------------------
+      # -------------------------
       # Phase 9 - Docker Build
       # -------------------------
 
@@ -131,7 +134,8 @@ jobs:
           file: ./Dockerfile
           push: false
           load: true
-          tags: frontend:${{ github.sha }}
+          tags: frontend:${{ env.IMAGE_VERSION }}
+
       # -------------------------
       # Phase 10 - SBOM
       # -------------------------
@@ -141,7 +145,7 @@ jobs:
 
       - name: Generate SBOM
         run: |
-          syft docker:frontend:${{ github.sha }} \
+          syft docker:frontend:${{ env.IMAGE_VERSION }} \
             -o spdx-json=frontend-sbom.spdx.json
 
       - name: Upload Frontend SBOM
@@ -149,9 +153,9 @@ jobs:
         with:
           name: frontend-sbom
           path: frontend-sbom.spdx.json
-      
 
-            # -------------------------
+
+      # -------------------------
       # Phase 11 - Trivy Scan
       # -------------------------
 
@@ -159,7 +163,7 @@ jobs:
         uses: aquasecurity/trivy-action@v0.36.0
         continue-on-error: true   # مؤقت - لحد ما نصلح الثغرات الحالية
         with:
-          image-ref: frontend:${{ github.sha }}
+          image-ref: frontend:${{ env.IMAGE_VERSION }}
           format: sarif
           output: trivy-results.sarif
           severity: CRITICAL,HIGH
@@ -190,7 +194,7 @@ jobs:
       - name: Install Cosign
         uses: sigstore/cosign-installer@v3
 
-           # -------------------------
+      # -------------------------
       # Phase 14 - Configure AWS
       # -------------------------
 
@@ -212,7 +216,7 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ${{ steps.login-ecr.outputs.registry }}/${{ vars.ECR_REPOSITORY }}:${{ github.sha }}
+            ${{ steps.login-ecr.outputs.registry }}/${{ vars.ECR_REPOSITORY }}:${{ env.IMAGE_VERSION }}
 
       # -------------------------
       # Debug GitHub OIDC Token
@@ -250,7 +254,7 @@ jobs:
           COSIGN_EXPERIMENTAL: "1"
         run: |
           cosign sign --yes \
-            ${{ steps.login-ecr.outputs.registry }}/${{ vars.ECR_REPOSITORY }}:${{ github.sha }}
+            ${{ steps.login-ecr.outputs.registry }}/${{ vars.ECR_REPOSITORY }}:${{ env.IMAGE_VERSION }}
 
       # -------------------------
       # Phase 16 - Verify Signature
@@ -261,4 +265,4 @@ jobs:
           cosign verify \
             --certificate-identity "https://github.com/${{ github.repository }}/.github/workflows/app-ci.yml@refs/heads/main" \
             --certificate-oidc-issuer "https://token.actions.githubusercontent.com" \
-            ${{ steps.login-ecr.outputs.registry }}/${{ vars.ECR_REPOSITORY }}:${{ github.sha }}
+            ${{ steps.login-ecr.outputs.registry }}/${{ vars.ECR_REPOSITORY }}:${{ env.IMAGE_VERSION }}
